@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+ 
+{% block content %}
+
+<div class="container-fluid mt-3 p-4">
+    <h5 class="text-center">Welcome to Attendance Module - Add Attendance</h5>
+</div>
+
+<form method="POST">
+
+    <div class="mb-2">
+        <label>Employee</label>
+        <select name="employee_id" class="form-control" required>
+            <option value="">-- Select Employee --</option>
+            {% for e in employees %}
+            <option value="{{ e.id }}">{{ e.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="mb-2">
+        <label>Date</label>
+        <input type="date" name="date" class="form-control" value="{{ current_date }}" required>
+    </div>
+
+    <div class="mb-3">
+        <label>Status</label>
+        <select name="status" class="form-control" required>
+            <option value="">-- Select Status --</option>
+            <option value="Present">Present</option>
+            <option value="Absent">Absent</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+</form>
+
+{% endblock %}

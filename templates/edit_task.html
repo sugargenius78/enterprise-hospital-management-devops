@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h3 class="text-center mb-4">Edit Task</h3>
+
+    <form method="POST">
+
+        <div class="mb-3">
+            <label class="form-label">Task Number</label>
+            <input type="text" class="form-control" value="{{ task.task_number }}" readonly>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Employee</label>
+            <select name="employee_id" class="form-select" required>
+                {% for employee in employees %}
+                <option value="{{ employee.id }}" {% if employee.id==task.employee_id %}selected{% endif %}>
+                    {{ employee.name }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Status</label>
+            <select name="status" class="form-select" required>
+                <option value="Pending" {% if task.status=="Pending" %}selected{% endif %}>Pending</option>
+                <option value="In Progress" {% if task.status=="In Progress" %}selected{% endif %}>In Progress</option>
+                <option value="Completed" {% if task.status=="Completed" %}selected{% endif %}>Completed</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea name="description" class="form-control" rows="4" required>{{ task.description }}</textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Created Date</label>
+            <input type="date" class="form-control"
+                value="{{ task.created_date.strftime('%Y-%m-%d') if task.created_date else '' }}" readonly>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Due Date</label>
+            <input type="date" name="due_date" class="form-control"
+                value="{{ task.due_date.strftime('%Y-%m-%d') if task.due_date else '' }}" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update Task</button>
+        <a href="{{ url_for('task.view_update_task') }}" class="btn btn-secondary">Cancel</a>
+
+    </form>
+</div>
+
+{% endblock %}

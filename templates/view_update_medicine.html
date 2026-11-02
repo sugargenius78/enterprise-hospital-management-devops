@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3 class="text-center">View Medicines</h3>
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in medicines %}
+        <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.name }}</td>
+            <td>{{ p.quantity }}</td>
+            <td>{{ p.price }}</td>
+            <td>
+                <a href="/edit_medicine/{{ p.id}}" class="btn btn-warning btn-sm">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h3 class="text-center mb-4">View / Update Tasks</h3>
+
+    <a href="{{ url_for('task.add_task') }}" class="btn btn-success mb-3">Add Task</a>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Task Number</th>
+                <th>Employee ID</th>
+                <th>Employee Name</th>
+                <th>Status</th>
+                <th>Description</th>
+                <th>Created Date</th>
+                <th>Due Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task.task_number }}</td>
+                <td>{{ task.employee_id }}</td>
+                <td>{{ task.employee_name }}</td>
+                <td>{{ task.status }}</td>
+                <td>{{ task.description }}</td>
+
+                <td>
+                    {% if task.created_date %}
+                    {{ task.created_date.strftime('%Y-%m-%d') }}
+                    {% else %}
+                    N/A
+                    {% endif %}
+                </td>
+
+                <td>
+                    {% if task.due_date %}
+                    {{ task.due_date.strftime('%Y-%m-%d') }}
+                    {% else %}
+                    N/A
+                    {% endif %}
+                </td>
+
+                <td>
+                    <a href="{{ url_for('task.edit_task', id=task.id) }}" class="btn btn-warning btn-sm">
+                        Edit
+                    </a>
+                </td>
+            </tr>
+
+            {% else %}
+            <tr>
+                <td colspan="8" class="text-center">No tasks found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

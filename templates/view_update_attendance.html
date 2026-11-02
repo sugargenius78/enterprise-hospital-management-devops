@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3 class="text-center">View Attendance Records</h3>
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Employee Name</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for a in attendance %}
+    <tr>
+        <td>{{ a.id }}</td>
+        <!-- Shows NAME by looking up Employee table using employee_id -->
+        <td>
+            {% for e in employees %}
+                {% if e.id == a.employee_id %}
+                    {{ e.name }}
+                {% endif %}
+            {% endfor %}
+        </td>
+        <td>{{ a.date }}</td>
+        <td>{{ a.status }}</td>
+        <td>
+            <a href="/edit_attendance/{{ a.id }}" class="btn btn-warning btn-sm">Edit</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

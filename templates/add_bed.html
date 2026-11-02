@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+ 
+{% block content %}
+<div class="container-fluid mt-3 p-4 bg-primary-subtle text-dark">
+     <h5 class="text-center">Welcome to Bed Module - Add Bed</h5>
+</div>
+<form method="POST">
+
+    <div class="mb-2">
+        <label>Bed Number / Identifier</label>
+        <input type="text" name="bed_number" class="form-control" required>
+    </div>
+
+    <div class="mb-2">
+        <label>Assigned Department</label>
+        <select name="department" class="form-control" required>
+            <option value="Doctors department">Doctors department</option>
+            <option value="Nurses Department">Nurses Department</option>
+            <option value="Pharmaceutical Department">Pharmaceutical Department</option>
+            <option value="HR department">HR department</option>
+            <option value="IT Department">IT Department</option>
+            </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Initial Status</label>
+        <select name="is_occupied" class="form-control" required>
+            <option value="false">Available (Unoccupied)</option>
+            <option value="true">Occupied</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+
+</form>
+{% endblock %}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid mt-2 p-3 bg-primary-subtle text-dark">
+        <h1>Hospital Management System</h1>
+    </div>
+    <div class="container-fluid mt-2 p-3 bg-primary-subtle text-dark">
+        <div class="btn-group">
+            <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Patient
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ url_for('patient.add_patient')}}">Add Patient</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('patient.view_update_patient')}}">View & Update
+                        Details</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="{{ url_for('base')}}">Home Page</a></li>
+            </ul>
+        </div>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Employee
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ url_for('employee.add_employee')}}">Add Employee</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('employee.view_update_employee')}}">View & Update
+                        Details</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="{{ url_for('base')}}">Home Page</a></li>
+            </ul>
+        </div>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Medicine
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ url_for('medicine.add_medicine')}}">Add Medicine</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('medicine.view_update_medicine')}}">View & Update
+                        Details</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="/">Home Page</a></li>
+            </ul>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                PatientBed
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ url_for('bed.add_bed')}}">Add Bed</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('bed.view_update_bed')}}">View & Update
+                        Details</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="/">Home Page</a></li>
+            </ul>
+        </div>
+
+        <!-- Billing Module -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Billing
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ url_for('bill.add_bill')}}">Add Bill</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('bill.view_update_bill')}}">View & Update Details</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="/">Home Page</a></li>
+            </ul>
+        </div>
+
+        <!-- Attendance Module -->
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Attendance
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ url_for('attendance.add_attendance')}}">Add Attendance</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('attendance.view_update_attendance')}}">View & Update
+                        Details</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="/">Home Page</a></li>
+            </ul>
+        </div>
+        <!-- Task Module -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Task
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ url_for('task.add_task') }}">Add Task</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('task.view_update_task') }}">View & Update Details</a>
+                </li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="{{ url_for('base') }}">Home Page</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="mt-4">
+        {% block content %}{% endblock %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-3">
+    <h3 class="text-center">View Bills</h3>
+
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Bill Number</th>
+                <th>Patient Name</th>
+                <th>Bill Type</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for bill in bills %}
+            <tr>
+                <td>{{ bill.id }}</td>
+                <td>{{ bill.bill_number }}</td>
+                <td>{{ bill.patient_name }}</td>
+                <td>{{ bill.bill_type }}</td>
+                <td>{{ bill.amount }}</td>
+                <td>{{ bill.status }}</td>
+                <td>
+                    <a href="{{ url_for('bill.edit_bill', id=bill.id) }}" class="btn btn-warning btn-sm">Edit</a>
+                </nav>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

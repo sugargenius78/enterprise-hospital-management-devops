@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid mt-3 p-4 bg-primary-subtle text-dark">
+     <h5 class="text-center">Welcome to Bed Module - Edit Bed</h5>
+</div>
+<form method="POST" class="mt-3">
+
+    <div class="mb-2">
+        <label>Bed Number / Identifier</label>
+        <input type="text" name="bed_number" value="{{ bed.bed_number }}" class="form-control" required>
+    </div>
+
+    <div class="mb-2">
+        <label>Assigned Department</label>
+        <input type="text" name="department" value="{{ bed.department }}" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label>Current Status</label>
+        <select name="is_occupied" class="form-control" required>
+            <option value="false" {% if not bed.is_occupied %}selected{% endif %}>Available (Unoccupied)</option>
+            <option value="true" {% if bed.is_occupied %}selected{% endif %}>Occupied</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Update</button>
+    <a href="{{ url_for('bed.view_update_bed') }}" class="btn btn-secondary">Back to List</a>
+
+</form>
+{% endblock %}

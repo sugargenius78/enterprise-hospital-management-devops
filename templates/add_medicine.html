@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-fluid mt-3 p-4 bg-primary-subtle text-dark">
+    <h5 class="text-center">Welcome to Medicine Module - Add Medicine</h5>
+</div>
+<form method="POST">
+
+    <div class="mb-2">
+        <label>Name</label>
+        <input type="text" name="name" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label>Quantity</label>
+        <input type="text" name="quantity" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label>price</label>
+        <input type="text" name="price" class="form-control" required>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+
+</form>
+{% endblock %}
